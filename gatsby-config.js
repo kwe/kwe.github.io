@@ -1,34 +1,33 @@
 module.exports = {
-  siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
-  },
   plugins: [
-    `gatsby-plugin-react-helmet`,
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: `gatsby-theme-notes`,
       options: {
-        name: `images`,
-        path: `${__dirname}/src/images`,
+        mdx: false,
+        basePath: `/notes`,
       },
     },
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
-    {
-      resolve: `gatsby-plugin-manifest`,
-      options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
-        start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
-        display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
-      },
-    },
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
+    // with gatsby-plugin-theme-ui, the last theme in the config
+    // will override the theme-ui context from other themes
+    { resolve: `gatsby-theme-blog` },
   ],
+  siteMetadata: {
+    // Used for the site title and SEO
+    title: `About me`,
+    // Used to provide alt text for your avatar
+    author: `Kevin Evans`,
+    // Used for SEO
+    description: `About me`,
+    // Used for social links in the root footer
+    social: [
+      {
+        name: `Twitter`,
+        url: `https://twitter.com/kwe`,
+      },
+      {
+        name: `GitHub`,
+        url: `https://github.com/kwe`,
+      },
+    ],
+  },
 }
